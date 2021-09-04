@@ -1,0 +1,26 @@
+{
+  "name": "minecraft-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=16.8.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.983.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.22.0",
+    "dotenv": "^10.0.0",
+    "discord.js": "^13.1.0",
+    "serverless": "^2.57.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.3",
+    "tweetnacl": "^1.0.3"
+  }
+}

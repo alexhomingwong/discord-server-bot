@@ -1,0 +1,22 @@
+service: minecraft-bot
+
+frameworkVersion: "2"
+
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+  region: eu-west-2
+
+  environment:
+    DC_PUBLIC_KEY: ${env:DC_PUBLIC_KEY}
+    DC_INCOMING_WEBHOOK: ${env:DC_INCOMING_WEBHOOK}
+
+functions:
+  serverBot:
+    handler: commands/server.bot
+    events:
+      - http:
+          path: /
+          method: post
