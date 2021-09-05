@@ -14,6 +14,7 @@ provider:
         - Effect: Allow
           Action:
             - lambda:InvokeFunction
+            - ec2:DescribeInstanceStatus
           Resource: "*"
   environment:
     DC_PUBLIC_KEY: ${env:DC_PUBLIC_KEY}

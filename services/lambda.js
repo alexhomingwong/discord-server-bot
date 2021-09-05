@@ -4,7 +4,7 @@ const client = new lambda({
   region: "eu-west-2",
 });
 
-module.exports.invokeLambda = (name) => {
+exports.invokeLambda = (name) => {
   console.log("Invoking lambda: " + getLambdaName(name));
   return client
     .invoke({
@@ -15,7 +15,7 @@ module.exports.invokeLambda = (name) => {
     .promise();
 };
 
-module.exports.sendResponse = (body, statusCode) => {
+exports.sendResponse = (body, statusCode) => {
   return {
     statusCode,
     body: JSON.stringify(body, null, 2),
