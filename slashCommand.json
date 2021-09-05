@@ -1,0 +1,22 @@
+{
+    "name": "server",
+    "type": 1,
+    "description": "Interact with the minecraft server",
+    "options": [
+        {
+            "name": "start",
+            "description": "Start the minecraft server",
+            "type": 1
+        },
+        {
+            "name": "stop",
+            "description": "Stop the minecraft server",
+            "type": 1
+        },
+        {
+            "name": "status",
+            "description": "Get the current status of the minecraft server",
+            "type": 1
+        }
+    ]
+}
