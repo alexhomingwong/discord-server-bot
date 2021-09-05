@@ -1,6 +1,6 @@
 const { verifyDiscordRequest } = require("../../services/discord");
 const { sendResponse } = require("../../services/lambda");
-const { handleServerActions } = require("../../services/lambda");
+const { handleServerActions } = require("./actions");
 
 module.exports.bot = async (event) => {
   try {
@@ -12,11 +12,22 @@ module.exports.bot = async (event) => {
       return sendResponse({ type: 1 }, 200);
     }
 
+    const { data } = JSON.parse(body);
+
+    let response = "Action was not performed";
+    switch (data.name) {
+      case "server":
+        response = handleServerActions(data.options);
+        break;
+      default:
+        throw new Error("Invalid slash command.");
+    }
+
     return sendResponse(
       {
         type: 4,
         data: {
-          content: "Roger",
+          content: response,
         },
       },
       200
