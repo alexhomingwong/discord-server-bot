@@ -7,12 +7,11 @@ module.exports.handler = async (event) => {
     const { body, headers } = event;
 
     verifyDiscordRequest(headers, body);
+    const { data, type } = JSON.parse(body);
 
-    if (body.type && body.type === 1) {
+    if (type === 1) {
       return sendResponse({ type: 1 }, 200);
     }
-
-    const { data } = JSON.parse(body);
 
     let response = "Action was not performed";
     switch (data.name) {
