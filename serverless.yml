@@ -28,6 +28,8 @@ provider:
 functions:
   stop:
     handler: commands/server/stop.handler
+    events:
+      - schedule: cron(0 3 * * * *)
   start:
     handler: commands/server/start.handler
   status:
