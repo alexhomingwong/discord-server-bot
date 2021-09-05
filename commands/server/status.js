@@ -20,5 +20,8 @@ module.exports.handler = async (event) => {
     }
   } catch (error) {
     console.log(error.message);
+    await axios.post(process.env.DC_INCOMING_WEBHOOK, {
+      content: "Server status: ERROR",
+    });
   }
 };

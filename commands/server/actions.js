@@ -5,7 +5,7 @@ module.exports.handleServerActions = async (actions) => {
     case "start":
       return await startServer();
     case "stop":
-      return "stopping server";
+      return await stopServer();
     case "status":
       return await getServerStatus();
 
@@ -23,4 +23,9 @@ const getServerStatus = async () => {
 const startServer = async () => {
   await invokeLambda("start");
   return "Starting minecraft server...";
+};
+
+const stopServer = async () => {
+  await invokeLambda("stop");
+  return "Stopping minecraft server...";
 };

@@ -12,3 +12,7 @@ exports.getServerStatus = () => {
 exports.startServer = () => {
   return client.startInstances({ InstanceIds: [process.env.EC2_ID] }).promise();
 };
+
+exports.stopServer = () => {
+  return client.stopInstances({ InstanceIds: [process.env.EC2_ID] }).promise();
+};
