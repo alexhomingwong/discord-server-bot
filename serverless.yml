@@ -8,14 +8,26 @@ provider:
   runtime: nodejs12.x
   lambdaHashingVersion: "20201221"
   region: eu-west-2
-
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - lambda:InvokeFunction
+          Resource: "*"
   environment:
     DC_PUBLIC_KEY: ${env:DC_PUBLIC_KEY}
     DC_INCOMING_WEBHOOK: ${env:DC_INCOMING_WEBHOOK}
+    # AWS_ACCESS_KEY: ${env:AWS_ACCESS_KEY}
+    # AWS_SECRET_KEY: ${env:AWS_SECRET_KEY}
+    EC2_ID: ${env:EC2_ID}
+    LAMBDA_NAME: ${self:service}-${self:provider.stage, 'dev'}
 
 functions:
+  status:
+    handler: commands/server/status.handler
   serverBot:
-    handler: commands/server.bot
+    handler: commands/server.handler
     events:
       - http:
           path: /
