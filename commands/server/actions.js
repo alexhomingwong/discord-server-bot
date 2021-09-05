@@ -3,7 +3,7 @@ const { invokeLambda } = require("../../services/lambda");
 module.exports.handleServerActions = async (actions) => {
   switch (actions[0].name) {
     case "start":
-      return "starting server";
+      return await startServer();
     case "stop":
       return "stopping server";
     case "status":
@@ -18,4 +18,9 @@ module.exports.handleServerActions = async (actions) => {
 const getServerStatus = async () => {
   await invokeLambda("status");
   return "Fetching server status...";
+};
+
+const startServer = async () => {
+  await invokeLambda("start");
+  return "Starting minecraft server...";
 };

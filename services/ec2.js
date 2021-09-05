@@ -8,3 +8,7 @@ exports.getServerStatus = () => {
     .describeInstanceStatus({ InstanceIds: [process.env.EC2_ID] })
     .promise();
 };
+
+exports.startServer = () => {
+  return client.startInstances({ InstanceIds: [process.env.EC2_ID] }).promise();
+};

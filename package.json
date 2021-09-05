@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "deploy": "serverless deploy --aws-profile personal",
+    "function": "serverless deploy function --aws-profile personal -f"
   },
   "engines": {
     "node": ">=16.8.0"
